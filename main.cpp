@@ -1,12 +1,14 @@
 #include "function.h"
 int main(int argc, char const *argv[])
 {
+    
     srand((unsigned int)time(NULL));
     double START,END;
     int pop = atoi(argv[1]);
     int iteration = atoi(argv[2]);
     int run = atoi(argv[3]);
     int ind;
+    vector<int> convergence(iteration,0); 
     vector<string> temp;
     ind= readfile(temp);
     // cout<<ind<<endl;
@@ -70,6 +72,7 @@ int main(int argc, char const *argv[])
             crossover(data.P,pop,ind,category.size());
             cout<<"Run"<<r+1<<'_'<<"Iteration"<<iter+1<<':'<<data.best_fitness<<endl;
             // cout<<iter+1<<": "<<data.accuracy<<endl;
+            convergence[iter]+=data.best_fitness;
             iter++;
         }
         
@@ -91,5 +94,11 @@ int main(int argc, char const *argv[])
     }
     SSE_RUN.AVG_SSE=SSE_RUN.AVG_SSE/run;
     finaloutput(iteration,pop,run,SSE_RUN.AVG_SSE,SSE_RUN.Best_SSE,SSE_RUN.Best_SSE_Category,START,END);
-   
+    fstream file1;
+    file1.open("GA_Clustering_Convergence.txt",ios::out);
+   for(int i=0;i<iteration;i++)
+   {
+       convergence[i]=convergence[i]/run;
+       file1<<(i+1)*pop<<' '<<convergence[i]<<endl;
+   }
 }

@@ -10,3 +10,4 @@ MR 0.15
 實作結果
 
 本次實作SSE最佳解為89
+詳細情形見GA_clustering.pdf
