@@ -160,7 +160,19 @@ void Find_best(vector<double> fit,vector<vector<int> > P,vector<int> &Best_P,int
         Best_P[i]=P[best_index][i];
     }
 }
-void finaloutput(int iteration,int pop,int run,int avgbestvalue,int best,vector<int>result,double START,double END)
+double Accuracy(vector<int> correct_category,vector<int> test_category,int ind)
+{
+    double r=0;
+    int a=0;int b=0;int c=0;
+    for(int i=0;i<ind;i++)
+    {
+        if(test_category[i]==correct_category[i])
+            r++;
+    }
+    r=r/ind;
+    return r;
+}
+void finaloutput(int iteration,int pop,int run,int avgbestvalue,int best,vector<int>result,double correct,double START,double END)
 {
     fstream file;//寫檔
 	file.open("GA_Clustering.txt",ios::app);
@@ -171,14 +183,18 @@ void finaloutput(int iteration,int pop,int run,int avgbestvalue,int best,vector<
     cout<<"AVG_SSE : "<<avgbestvalue<<endl;
     cout<<"Execution Time :"<<(END - START) / CLOCKS_PER_SEC<<"(s)"<<endl;
     cout<<"Best_SSE : "<<best<<endl;
-    file<<endl;
+    cout<<"Accuracy : "<<correct*100<<'%'<<endl;
+   
     file<<"Run : "<<run<<endl;
     file<<"Population : "<<pop<<endl;
     file<<"Iteration: "<<iteration<<endl;
     file<<"AVG_SSE : "<<avgbestvalue<<endl;
     file<<"Execution Time :"<<(END - START) / CLOCKS_PER_SEC<<"(s)"<<endl;
     file<<"Best_SSE : "<<best<<endl;
-    file<<"Category_Result : "<<endl;
+    file<<"Accuracy : "<<correct*100<<'%'<<endl;
+    file<<"Category_Result : "<<endl; 
+    file<<endl;
+
     for(int i=0;i<result.size();i++)
     {
         cout<<result[i]<<' ';

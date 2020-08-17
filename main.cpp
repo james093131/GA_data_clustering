@@ -93,7 +93,9 @@ int main(int argc, char const *argv[])
         SSE_RUN.AVG_SSE+=SSE_RUN.SSE_result[i];
     }
     SSE_RUN.AVG_SSE=SSE_RUN.AVG_SSE/run;
-    finaloutput(iteration,pop,run,SSE_RUN.AVG_SSE,SSE_RUN.Best_SSE,SSE_RUN.Best_SSE_Category,START,END);
+    double correct=Accuracy(correct_category,SSE_RUN.Best_SSE_Category,ind);
+    finaloutput(iteration,pop,run,SSE_RUN.AVG_SSE,SSE_RUN.Best_SSE,SSE_RUN.Best_SSE_Category,correct,START,END);
+    
     fstream file1;
     file1.open("GA_Clustering_Convergence.txt",ios::out);
    for(int i=0;i<iteration;i++)
