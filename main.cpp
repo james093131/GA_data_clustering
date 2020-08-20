@@ -9,6 +9,7 @@ int main(int argc, char const *argv[])
     int run = atoi(argv[3]);
     int ind;
     vector<int> convergence(iteration,0); 
+    double clc=0;
     vector<string> temp;
     ind= readfile(temp);
     // cout<<ind<<endl;
@@ -48,8 +49,11 @@ int main(int argc, char const *argv[])
         {
             vector<vector<double> >  sum(category.size(),vector<double>(item-1,0));
             SSE_Category_Data_Sum(data.inf, sum,data.P[i],ind,item,category.size());
+            double start1=clock();
             SSE_Formula(data.inf,sum,correct_category,data.fitness,i,ind,item);
-        }//SSE完成    
+            double end1=clock(); 
+            clc+=(end1 - start1) / CLOCKS_PER_SEC;
+        }//SSE完成   
         Find_best(data.fitness,data.P,data.Best_P,ind,item,pop,data.best_fitness);
         
         data.P=tournament(data.fitness,data.P,pop,ind,data.Best_P);
@@ -103,4 +107,5 @@ int main(int argc, char const *argv[])
        convergence[i]=convergence[i]/run;
        file1<<(i+1)*pop<<' '<<convergence[i]<<endl;
    }
+   cout<<endl<<"SSE Execution Time : "<<clc<<endl;
 }
