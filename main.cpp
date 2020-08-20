@@ -64,7 +64,7 @@ int main(int argc, char const *argv[])
             {
                 vector<vector<double> > sum(category.size(),vector<double>(item-1,0));
                 SSE_Category_Data_Sum(data.inf, sum,data.P[i],ind,item,category.size());
-                SSE_Formula(data.inf,sum,correct_category,data.fitness,i,ind,item);
+                SSE_Formula(data.inf,sum,data.P[i],data.fitness,i,ind,item);
                 // cout<<data.fitness[i]<<endl;
             }//SSE完成
             Find_best(data.fitness,data.P,data.Best_P,ind,item,pop,data.best_fitness);
