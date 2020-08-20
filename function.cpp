@@ -21,24 +21,25 @@ void Vector_copy(vector<vector<double> > clean_data,vector<vector<double> > &inf
         }
     }
 }
-void SSE_Category_Data_Sum(vector<vector<double> > inf,vector<vector<double> > &sum,vector<int> P,int ind,int item,int category)
+void SSE_Category_Data_Sum(vector<vector<double> > inf,vector<vector<double> > &sum,vector<vector<double> > PR_sum,vector<int> P,vector<int> lock,int ind,int item,int category)
 {
     vector<int> k(category);
     for(int i=0;i<ind;i++)
     {
         k[P[i]]++;
-    }
-    for(int i=0;i<ind;i++)
-    {
-        for(int j=0;j<item-1;j++)
-        {
-            sum[P[i]][j] += inf[i][j];
+        if(lock[i]!=1){
+            for(int j=0;j<item-1;j++)
+            {
+             sum[P[i]][j] += inf[i][j];
+            }
         }
+        
     }
     for(int i=0;i<category;i++)
     {
         for(int j=0;j<item-1;j++)
         {
+            sum[i][j]+=PR_sum[i][j];
             sum[i][j]=sum[i][j]/k[i];
         }
     }
@@ -97,7 +98,7 @@ void mutation(vector<int>P,int ind,int category)//隨機選取一點做調換
     
     
 }
-void crossover(vector<vector<int> > &P,int pop,int ind,int category)
+void crossover(vector<vector<int> > &P,int pop,int ind,int category,vector<int> lock)
 {
     int i=0;
     while(i<pop){
@@ -115,7 +116,12 @@ void crossover(vector<vector<int> > &P,int pop,int ind,int category)
         for(int k=0;k<ind;k++)
         {
             if(t1<CR){
-                if(k>c1||k<c2||k==c3||k==c4||k==c5||k==c6)
+                if(lock[k]==1)
+                {
+                    P[i][k]=P[i][k];
+                    P[i+1][k]=P[i+1][k];
+                }
+                else if(k>c1||k<c2||k==c3||k==c4||k==c5||k==c6)
                 {
                     int temp=P[i][k];
                     P[i][k]=P[i+1][k];

@@ -9,6 +9,7 @@
 #include<vector>
 #define CR 0.95
 #define MR 0.15
+#define PR_coefficient 0.8
 using namespace std;
 class Iris_Data { 
 public: 
@@ -25,6 +26,14 @@ public:
     vector<int> Best_SSE_Category;
     int AVG_SSE;
     int Best_SSE;
+};
+class PR{
+public:
+    vector<vector<int> > index;
+    vector<int> lock;
+    int PR_Accumulation;
+    vector<vector<double> > Sum;
+
 };
 int  readfile(vector<string> &s);//讀檔 以讀一行一行的方式來讀取
 int getinf(vector<string> s);//用,分割看有幾項
