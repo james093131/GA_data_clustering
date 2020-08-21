@@ -111,16 +111,17 @@ int main(int argc, char const *argv[])
         int iter=0;
         while(iter<iteration)
         {
+            double start1=clock();
             for(int i=0;i<pop;i++)//SSE計算
             {
                 vector<vector<double> > sum(category.size(),vector<double>(item-1,0));
                 SSE_Category_Data_Sum(data.inf, sum,PR_record.Sum,data.P[i],PR_record.lock,ind,item,category.size());
-                double start1=clock();
                 SSE_Formula(data.inf,sum,data.P[i],data.fitness,i,ind,item);
-                double end1=clock();   
-                clc+=(end1 - start1) / CLOCKS_PER_SEC;
+                
                 // cout<<data.fitness[i]<<endl;
             }//SSE完成
+            double end1=clock();   
+            clc+=(end1 - start1) / CLOCKS_PER_SEC;
             Find_best(data.fitness,data.P,data.Best_P,ind,item,pop,data.best_fitness);
             data.P=tournament(data.fitness,data.P,pop,ind,data.Best_P);
             crossover(data.P,pop,ind,category.size(),PR_record.lock);
