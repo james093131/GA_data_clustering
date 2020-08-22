@@ -120,7 +120,7 @@ vector<vector<int> >  tournament(vector<double> fit,vector<vector<int> > P,int p
     }
     return temp;
 }
-void mutation(vector<int>P,int ind,int category,vector<int>lock)//隨機選取一點做調換
+void mutation(vector<int>&P,int ind,int category,vector<int>lock)//隨機選取一點做調換
 {
     int c=rand()%ind;
     if(lock[c]==0)
@@ -294,7 +294,6 @@ void Recovery_SSE_Formula(vector<vector<double> > inf,vector<int> P,double &fit,
         for(int k=0;k<item-1;k++)
         {
             fit += pow(inf[j][k]-sum[P[j]][k],2);
-            
         }
     }
 }

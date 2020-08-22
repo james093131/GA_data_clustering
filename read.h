@@ -8,7 +8,7 @@
 #include<math.h>
 #include<vector>
 #define CR 0.95
-#define MR 0.15
+#define MR 0.1
 #define PR_coefficient 0.8
 using namespace std;
 class Iris_Data { 
