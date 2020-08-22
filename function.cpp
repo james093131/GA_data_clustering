@@ -21,51 +21,73 @@ void Vector_copy(vector<vector<double> > clean_data,vector<vector<double> > &inf
         }
     }
 }
-void SSE_Category_Data_Sum(vector<vector<double> > inf,vector<vector<double> > &sum,vector<vector<double> > PR_sum,vector<int> P,vector<int> lock,int ind,int item,int category,vector<int> Category_Sum)
+void SSE_Category_Data_Sum(vector<vector<double> > inf,vector<vector<double> > &sum,vector<vector<double> > PR_sum,vector<vector<int> > P,vector<int> lock,int ind,int pop,int item,int category,vector<int> Category_Sum)
 {
-    vector<int> k(category);
+    vector<vector<int> > k;
+    k.resize(pop);
+    for(int z=0;z<pop;z++) {k[z].resize(category);}
     for(int i=0;i<ind;i++)
     {
-        
         if(lock[i]==0)
         {
-            k[P[i]]++;
-            for(int j=0;j<item-1;j++)
+            for(int j=0;j<pop;j++)
             {
-                sum[P[i]][j] += inf[i][j];
+                k[j][P[j][i]]++;//k為pop個category長度的陣列,P為pop個長度為ind的陣列
+                for(int y=0;y<item-1;y++)
+                {
+                    int clc=(item-1)*P[j][i];
+                    sum[j][clc+y] += inf[i][y];
+                }
+
             }
         }
     }
-    for(int i=0;i<category;i++)
+    for(int y=0;y<pop;y++)
     {
-        for(int j=0;j<item-1;j++)
+        for(int i=0;i<category;i++)
         {
-            if(Category_Sum[i]!=0)
+            for(int j=0;j<item-1;j++)
             {
-                sum[i][j]+=PR_sum[i][j]/Category_Sum[i];
-                sum[i][j]=sum[i][j]/(k[i]+1);
+                int clc=(item-1)*i;
+                if(Category_Sum[i]!=0)
+                {
+                    sum[y][clc+j]+=PR_sum[i][j]/Category_Sum[i];
+                    sum[i][j]=sum[i][j]/(k[y][i]+1);
+                }
+                else{
+                    sum[y][clc+j]=sum[y][clc+j]/k[y][i];
+                }
+                    
             }
-            else{
-                sum[i][j]=sum[i][j]/k[i];
-            }
-                
         }
     }
 }
-void SSE_Formula(vector<vector<double> > inf,vector<vector<double> > sum,vector<int> P,vector<double>&fit,int i,int ind,int item,vector<int> lock)
+void SSE_Formula(vector<vector<double> > inf,vector<vector<double> > sum,vector<vector<int> > P,vector<double>&fit,int pop,int ind,int item,vector<int> lock,vector<vector<double> > PR_sum,vector<int> Category_Sum,int category)
 {
-    fit[i]=0;
-    for(int j=0;j<ind;j++)
+    
+    for(int y=0;y<pop;y++)
     {
-        if(lock[j]==0)
+        fit[y]=0;
+        for(int j=0;j<ind;j++)
         {
-            
-            for(int k=0;k<item-1;k++)
+            if(lock[j]==0)
             {
-            fit[i]+=pow(inf[j][k]-sum[P[j]][k],2);
+                for(int k=0;k<item-1;k++)
+                {
+                    int clc=(item-1)*P[y][j];
+                    fit[y]+=pow(inf[j][k]-sum[y][clc+k],2);//sum logic
+                }
             }
+        
         }
+        for(int i=0;i<category;i++)
+            for(int j=0;j<item-1;j++)
+            {
+                if(Category_Sum[i]!=0)
+                    fit[y] += pow( (PR_sum[i][j]/Category_Sum[i])-sum[y][i*j+j],2);
+            }
     }
+    
 }
 vector<vector<int> >  tournament(vector<double> fit,vector<vector<int> > P,int pop,int ind,vector<int> Best_P)
 {
@@ -98,15 +120,15 @@ vector<vector<int> >  tournament(vector<double> fit,vector<vector<int> > P,int p
     }
     return temp;
 }
-void mutation(vector<int>P,int ind,int category)//隨機選取一點做調換
+void mutation(vector<int>P,int ind,int category,vector<int>lock)//隨機選取一點做調換
 {
     int c=rand()%ind;
-    int a=rand()%category;
-    // while(a==P[c])
-    // {
-    //     a=rand()%category;
-    // }
-    P[c]=a;
+    if(lock[c]==0)
+    {
+        int a=rand()%category;
+        P[c]=a;
+    }
+   
     
     
 }
@@ -128,7 +150,7 @@ void crossover(vector<vector<int> > &P,int pop,int ind,int category,vector<int> 
         for(int k=0;k<ind;k++)
         {
             if(t1<CR){
-                if(lock[k]==1)
+                if(lock[k]!=0)
                 {
                     P[i][k]=P[i][k];
                     P[i+1][k]=P[i+1][k];
@@ -151,11 +173,11 @@ void crossover(vector<vector<int> > &P,int pop,int ind,int category,vector<int> 
         float y = (float) rand() / (RAND_MAX + 1.0);
         if(x<MR)
         {
-            mutation(P[i],ind,category);
+            mutation(P[i],ind,category,lock);
         }
         if(y<MR)
         {
-             mutation(P[i+1],ind,category);
+             mutation(P[i+1],ind,category,lock);
         }
          i+=2;
     }
@@ -190,7 +212,7 @@ double Accuracy(vector<int> correct_category,vector<int> test_category,int ind)
     r=r/ind;
     return r;
 }
-void finaloutput(int iteration,int pop,int run,int avgbestvalue,int best,vector<int>result,double correct,double START,double END)
+void finaloutput(int iteration,int pop,int run,int avgbestvalue,int best,vector<int>result,int AVG_PR_Lock,double correct,double START,double END,double clc)
 {
     fstream file;//寫檔
 	file.open("GA_Clustering.txt",ios::app);
@@ -199,7 +221,9 @@ void finaloutput(int iteration,int pop,int run,int avgbestvalue,int best,vector<
     cout<<"Population : "<<pop<<endl;
     cout<<"Iteration: "<<iteration<<endl;
     cout<<"AVG_SSE : "<<avgbestvalue<<endl;
+    cout<<"AVG_PR_LOCK : "<<AVG_PR_Lock<<endl;
     cout<<"Execution Time :"<<(END - START) / CLOCKS_PER_SEC<<"(s)"<<endl;
+    cout<<"SSE Execution Time : "<<clc<<endl;
     cout<<"Best_SSE : "<<best<<endl;
     cout<<"Accuracy : "<<correct*100<<'%'<<endl;
    
@@ -207,7 +231,10 @@ void finaloutput(int iteration,int pop,int run,int avgbestvalue,int best,vector<
     file<<"Population : "<<pop<<endl;
     file<<"Iteration: "<<iteration<<endl;
     file<<"AVG_SSE : "<<avgbestvalue<<endl;
+    file<<"AVG_PR_LOCK : "<<AVG_PR_Lock<<endl;
+    file<<"SSE Execution Time : "<<clc<<endl;
     file<<"Execution Time :"<<(END - START) / CLOCKS_PER_SEC<<"(s)"<<endl;
+    
     file<<"Best_SSE : "<<best<<endl;
     file<<"Accuracy : "<<correct*100<<'%'<<endl;
     file<<"Category_Result : "<<endl; 
@@ -225,3 +252,4 @@ void finaloutput(int iteration,int pop,int run,int avgbestvalue,int best,vector<
             
     }
 }
+// void recoverSSE()

@@ -6,40 +6,38 @@ void PR_Check(vector<int> &lock,vector<vector<int> > P ,vector<vector<int> > &ch
         ;
     }
     else{
-
-    
-    for(int i=0;i<ind;i++){check[0][i]=0;}
-    for(int i=0;i<pop;i+=2)
-    {
-        for(int j=0;j<ind;j++)
+        for(int i=0;i<ind;i++){check[0][i]=0;}
+        for(int i=0;i<pop;i+=2)
         {
-            if(P[i][j]==P[i+1][j])
-                check[0][j]++;
+            for(int j=0;j<ind;j++)
+            {
+                if(P[i][j]==P[i+1][j])
+                    check[0][j]++;
+            }
         }
-    }
-    for(int i=0;i<ind;i++)
-    {
-        if(check[0][i] == (pop/2) )
+        for(int i=0;i<ind;i++)
         {
-            check[1][i]++;
-                if(check[1][i] >= (PR_ignore/pop))//因為pop數量不同會導致不同有不同的evaluation所以除上pop在達到iter後才鎖住
-                {
-                    if(lock[i]==0)
+            if(check[0][i] == (pop/2) )
+            {
+                check[1][i]++;
+                    if(check[1][i] >= (PR_ignore/pop))//因為pop數量不同會導致不同有不同的evaluation所以除上pop在達到iter後才鎖住
                     {
-                        Accumulation++;
-                        lock[i]=P[0][i]+1;
-                        Category_Sum[lock[i]-1]++;
-                        int category=P[0][i];
-                        for(int k=0;k<item-1;k++)
+                        if(lock[i]==0 )
                         {
-                            sum[category][k]+=inf[i][k];
+                            Accumulation++;
+                            lock[i]=P[0][i]+1;
+                            Category_Sum[lock[i]-1]++;
+                            int category=P[0][i];
+                            for(int k=0;k<item-1;k++)
+                            {
+                                sum[category][k]+=inf[i][k];
+                            }
+                        
                         }
-                     
+                        
+                    
                     }
-                       
                 
-                }
-            
             }
             else{
                 check[1][i]=0;
@@ -76,6 +74,7 @@ int main(int argc, char const *argv[])
     SSE_RUN.Best_SSE_Category.resize(ind);
     SSE_RUN.AVG_SSE=0;
     SSE_RUN.Best_SSE=100000;
+    SSE_RUN.AVG_PR_Lock=0;
 //---run資料初始化完成
     Iris_Data data;
     data.P.resize(pop,vector<int>(ind));
@@ -83,10 +82,17 @@ int main(int argc, char const *argv[])
     data.fitness.resize(pop);
     data.Best_P.resize(ind);
     vector<int> correct_category(ind);//正解
+    
     for(int i=0;i<ind;i++)
     {
         correct_category[i]=clean_data[i][item-1];
     }
+     vector<vector<int> > correct_2d;
+     correct_2d.resize(pop);
+     for(int i=0;i<pop;i++)
+     {
+         correct_2d[i].assign(correct_category.begin(),correct_category.end());
+     }
     /////----花的資訊初始化完成
     int r=0;
     Vector_copy(clean_data,data.inf,ind ,item-1);
@@ -102,12 +108,10 @@ int main(int argc, char const *argv[])
         PR_record.Category_Sum.resize(category.size());
         //-----PR設定完成
         create(data.P,pop,category.size(),ind);//隨機產生染色體
-        for(int i=0;i<pop;i++)
-        {
-            vector<vector<double> >  sum(category.size(),vector<double>(item-1,0));
-            SSE_Category_Data_Sum(data.inf, sum,PR_record.Sum,data.P[i],PR_record.lock,ind,item,category.size(),PR_record.Category_Sum);
-            SSE_Formula(data.inf,sum,correct_category,data.fitness,i,ind,item,PR_record.lock);
-        }//SSE完成    
+            vector<vector<double> > sum(pop,vector<double>(category.size()*(item-1),0));
+            SSE_Category_Data_Sum(data.inf, sum,PR_record.Sum,data.P,PR_record.lock,ind,pop,item,category.size(),PR_record.Category_Sum);
+            SSE_Formula(data.inf,sum,correct_2d,data.fitness,pop,ind,item,PR_record.lock,PR_record.Sum,PR_record.Category_Sum,category.size());
+        //SSE完成    
         Find_best(data.fitness,data.P,data.Best_P,ind,item,pop,data.best_fitness);
         
         data.P=tournament(data.fitness,data.P,pop,ind,data.Best_P);
@@ -119,14 +123,12 @@ int main(int argc, char const *argv[])
         while(iter<iteration)
         {
             double start1=clock();
-            for(int i=0;i<pop;i++)//SSE計算
-            {
-                vector<vector<double> > sum(category.size(),vector<double>(item-1,0));
-                SSE_Category_Data_Sum(data.inf, sum,PR_record.Sum,data.P[i],PR_record.lock,ind,item,category.size(),PR_record.Category_Sum);
-                SSE_Formula(data.inf,sum,data.P[i],data.fitness,i,ind,item,PR_record.lock);
+            vector<vector<double> > sum(pop,vector<double>(category.size()*(item-1),0));
+            SSE_Category_Data_Sum(data.inf, sum,PR_record.Sum,data.P,PR_record.lock,ind,pop,item,category.size(),PR_record.Category_Sum);
+            SSE_Formula(data.inf,sum,correct_2d,data.fitness,pop,ind,item,PR_record.lock,PR_record.Sum,PR_record.Category_Sum,category.size());
                 
                 // cout<<data.fitness[i]<<endl;
-            }//SSE完成
+        //SSE完成
             double end1=clock();   
             clc+=(end1 - start1) / CLOCKS_PER_SEC;
             Find_best(data.fitness,data.P,data.Best_P,ind,item,pop,data.best_fitness);
@@ -148,10 +150,7 @@ int main(int argc, char const *argv[])
                 SSE_RUN.Best_SSE_Category[i]=data.Best_P[i];
             }
         }
-        for(int i=0;i<ind;i++)
-        {
-            cout<<"LOCK: "<<i<<' '<<PR_record.lock[i]<<endl;
-        }
+        SSE_RUN.AVG_PR_Lock += PR_record.PR_Accumulation;
         r++;
     }
     END=clock();
@@ -160,8 +159,9 @@ int main(int argc, char const *argv[])
         SSE_RUN.AVG_SSE+=SSE_RUN.SSE_result[i];
     }
     SSE_RUN.AVG_SSE=SSE_RUN.AVG_SSE/run;
+    SSE_RUN.AVG_PR_Lock=SSE_RUN.AVG_PR_Lock/run;
     double correct=Accuracy(correct_category,SSE_RUN.Best_SSE_Category,ind);
-    finaloutput(iteration,pop,run,SSE_RUN.AVG_SSE,SSE_RUN.Best_SSE,SSE_RUN.Best_SSE_Category,correct,START,END);
+    finaloutput(iteration,pop,run,SSE_RUN.AVG_SSE,SSE_RUN.Best_SSE,SSE_RUN.Best_SSE_Category,SSE_RUN.AVG_PR_Lock,correct,START,END,clc);
     
     fstream file1;
     file1.open("GA_Clustering_Convergence.txt",ios::out);
@@ -170,5 +170,5 @@ int main(int argc, char const *argv[])
        convergence[i]=convergence[i]/run;
        file1<<(i+1)*pop<<' '<<convergence[i]<<endl;
    }
-   cout<<endl<<"SSE Execution Time : "<<clc<<endl;
+   
 }

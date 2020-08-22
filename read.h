@@ -24,6 +24,7 @@ class Run_Best{
 public:
     vector<int> SSE_result;
     vector<int> Best_SSE_Category;
+    int AVG_PR_Lock;
     int AVG_SSE;
     int Best_SSE;
 };
