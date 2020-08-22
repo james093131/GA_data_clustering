@@ -33,6 +33,7 @@ public:
     vector<int> lock;
     int PR_Accumulation;
     vector<vector<double> > Sum;
+    vector<int> Category_Sum;
 
 };
 int  readfile(vector<string> &s);//讀檔 以讀一行一行的方式來讀取

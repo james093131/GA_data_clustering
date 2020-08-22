@@ -21,37 +21,49 @@ void Vector_copy(vector<vector<double> > clean_data,vector<vector<double> > &inf
         }
     }
 }
-void SSE_Category_Data_Sum(vector<vector<double> > inf,vector<vector<double> > &sum,vector<vector<double> > PR_sum,vector<int> P,vector<int> lock,int ind,int item,int category)
+void SSE_Category_Data_Sum(vector<vector<double> > inf,vector<vector<double> > &sum,vector<vector<double> > PR_sum,vector<int> P,vector<int> lock,int ind,int item,int category,vector<int> Category_Sum)
 {
     vector<int> k(category);
     for(int i=0;i<ind;i++)
     {
-        k[P[i]]++;
-        if(lock[i]!=1){
+        
+        if(lock[i]==0)
+        {
+            k[P[i]]++;
             for(int j=0;j<item-1;j++)
             {
-             sum[P[i]][j] += inf[i][j];
+                sum[P[i]][j] += inf[i][j];
             }
         }
-        
     }
     for(int i=0;i<category;i++)
     {
         for(int j=0;j<item-1;j++)
         {
-            sum[i][j]+=PR_sum[i][j];
-            sum[i][j]=sum[i][j]/k[i];
+            if(Category_Sum[i]!=0)
+            {
+                sum[i][j]+=PR_sum[i][j]/Category_Sum[i];
+                sum[i][j]=sum[i][j]/(k[i]+1);
+            }
+            else{
+                sum[i][j]=sum[i][j]/k[i];
+            }
+                
         }
     }
 }
-void SSE_Formula(vector<vector<double> > inf,vector<vector<double> > sum,vector<int> P,vector<double>&fit,int i,int ind,int item)
+void SSE_Formula(vector<vector<double> > inf,vector<vector<double> > sum,vector<int> P,vector<double>&fit,int i,int ind,int item,vector<int> lock)
 {
     fit[i]=0;
     for(int j=0;j<ind;j++)
     {
-        for(int k=0;k<item-1;k++)
+        if(lock[j]==0)
         {
+            
+            for(int k=0;k<item-1;k++)
+            {
             fit[i]+=pow(inf[j][k]-sum[P[j]][k],2);
+            }
         }
     }
 }
