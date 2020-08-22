@@ -108,6 +108,7 @@ int main(int argc, char const *argv[])
         PR_record.Category_Sum.resize(category.size());
         //-----PR設定完成
         create(data.P,pop,category.size(),ind);//隨機產生染色體
+
             vector<vector<double> > sum(pop,vector<double>(category.size()*(item-1),0));
             SSE_Category_Data_Sum(data.inf, sum,PR_record.Sum,data.P,PR_record.lock,ind,pop,item,category.size(),PR_record.Category_Sum);
             SSE_Formula(data.inf,sum,correct_2d,data.fitness,pop,ind,item,PR_record.lock,PR_record.Sum,PR_record.Category_Sum,category.size());
@@ -142,8 +143,8 @@ int main(int argc, char const *argv[])
         }
         vector<vector<double> >  SSE_sum(category.size(),vector<double>(item-1,0));
         Recovery_SSE_Category_Data_Sum(data.inf, SSE_sum,data.Best_P,ind,item,category.size());
-        Recovery_SSE_Formula(data.inf,SSE_sum,data.Best_P,data.best_fitness,ind,item,category.size());
-        cout<<"Recovery SSE : "<<data.best_fitness<<endl;
+        double T=Recovery_SSE_Formula(data.inf,SSE_sum,data.Best_P,ind,item);
+        cout<<"Recovery SSE : "<<T<<endl;
         SSE_RUN.SSE_result[r]=data.best_fitness;
         if(SSE_RUN.SSE_result[r]<SSE_RUN.Best_SSE)
         {

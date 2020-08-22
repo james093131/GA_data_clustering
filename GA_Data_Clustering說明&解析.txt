@@ -11,3 +11,27 @@ MR 0.15
 
 本次實作SSE最佳解為89
 詳細情形見GA_clustering.pdf
+
+
+Population : 500
+Iteration: 200
+AVG_SSE : 12
+AVG_PR_LOCK : 121
+SSE Execution Time : 64.2833(s)
+Execution Time :104.558(s)
+Best_SSE : 8
+Accuracy : 85.3333%
+Category_Result : 
+
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 1 1 1 1 1 1 1 1 1 1 1 1 1 2 1 1 
+2 1 2 1 1 1 1 2 2 2 2 1 1 2 2 1 2 2 2 1 2 1 2 1 2 2 1 2 2 1 2 2 2 1 2 1 2 2 1 2 2 1 2 2 2 1 1 2 2 2 Run : 30
+Population : 500
+Iteration: 200
+AVG_SSE : 89
+AVG_PR_LOCK : 0
+SSE Execution Time : 131.586(s)
+Execution Time :172.771(s)
+Best_SSE : 89
+Accuracy : 85.3333%
+Category_Result : 

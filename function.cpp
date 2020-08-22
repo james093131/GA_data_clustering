@@ -188,7 +188,7 @@ void Find_best(vector<double> fit,vector<vector<int> > P,vector<int> &Best_P,int
     int best_index;
     for(int i=0;i<pop;i++)
     {
-        if(best>fit[i])
+        if(best > fit[i])
         {
             best=fit[i];
             best_index=i;
@@ -211,6 +211,40 @@ double Accuracy(vector<int> correct_category,vector<int> test_category,int ind)
     }
     r=r/ind;
     return r;
+}
+void Recovery_SSE_Category_Data_Sum(vector<vector<double> > inf,vector<vector<double> > &sum,vector<int> P,int ind,int item,int category)
+{
+   vector<int> k(category);
+    for(int i=0;i<ind;i++)
+    {
+        k[P[i]]++;
+    }
+    for(int i=0;i<ind;i++)
+    {
+        for(int j=0;j<item-1;j++)
+        {
+            sum[P[i]][j] += inf[i][j];
+        }
+    }
+    for(int i=0;i<category;i++)
+    {
+        for(int j=0;j<item-1;j++)
+        {
+            sum[i][j] = sum[i][j]/k[i];
+        }
+    }
+}
+double Recovery_SSE_Formula(vector<vector<double> > inf,vector<vector<double> > sum,vector<int> P,int ind,int item)
+{
+    double temp=0;
+    for(int j=0;j<ind;j++)
+    {
+        for(int k=0;k<item-1;k++)
+        {
+            temp += pow(inf[j][k]-sum[P[j]][k],2);
+        }
+    }
+    return temp;
 }
 void finaloutput(int iteration,int pop,int run,int avgbestvalue,int best,vector<int>result,int AVG_PR_Lock,double correct,double START,double END,double clc)
 {
@@ -251,44 +285,5 @@ void finaloutput(int iteration,int pop,int run,int avgbestvalue,int best,vector<
         }
             
     }
-}
-void Recovery_SSE_Category_Data_Sum(vector<vector<double> > inf,vector<vector<double> > &sum,vector<int> P,int ind,int item,int category)
-{
-   vector<int> k(category);
-    for(int i=0;i<ind;i++)
-    {
-        k[P[i]]++;
-    }
-    for(int i=0;i<ind;i++)
-    {
-        for(int j=0;j<item-1;j++)
-        {
-            sum[P[i]][j] += inf[i][j];
-        }
-    }
-    for(int i=0;i<category;i++)
-    {
-        for(int j=0;j<item-1;j++)
-        {
-            sum[i][j]=sum[i][j]/k[i];
-        }
-    }
-}
-void Recovery_SSE_Formula(vector<vector<double> > inf,vector<vector<double> > &sum,vector<int> P,double &fit,int ind,int item,int category)
-{
-    for(int i=0;i<category;i++){
-        for(int j=0;j<item-1;j++)
-        {
-            cout<<sum[i][j]<<' ';
-        }
-        cout<<endl;
-    }
-    fit=0.0;
-    for(int j=0;j<ind;j++)
-    {
-        for(int k=0;k<item-1;k++)
-        {
-            fit += pow(inf[j][k]-sum[P[j]][k],2);
-        }
-    }
+    file.close();
 }
