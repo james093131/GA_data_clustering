@@ -252,7 +252,7 @@ void finaloutput(int iteration,int pop,int run,int avgbestvalue,int best,vector<
             
     }
 }
-void Recovery_SSE_Category_Data_Sum(vector<vector<double> > &sum,vector<vector<double> > inf,vector<int> P,int ind,int item,int category)
+void Recovery_SSE_Category_Data_Sum(vector<vector<double> > inf,vector<vector<double> > &sum,vector<int> P,int ind,int item,int category)
 {
    vector<int> k(category);
     for(int i=0;i<ind;i++)
@@ -274,13 +274,8 @@ void Recovery_SSE_Category_Data_Sum(vector<vector<double> > &sum,vector<vector<d
         }
     }
 }
-void Recovery_SSE_Formula(vector<vector<double> > inf,vector<int> P,double &fit,int ind,int item,int category)
+void Recovery_SSE_Formula(vector<vector<double> > inf,vector<vector<double> > &sum,vector<int> P,double &fit,int ind,int item,int category)
 {
-    
-    vector<vector<double> > sum;
-    sum.resize(category);
-    for(int z=0;z<category;z++) {sum[z].resize(item-1,0);}
-    Recovery_SSE_Category_Data_Sum(sum,inf,P,ind,item,category);
     for(int i=0;i<category;i++){
         for(int j=0;j<item-1;j++)
         {

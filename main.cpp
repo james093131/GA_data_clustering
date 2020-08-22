@@ -140,7 +140,9 @@ int main(int argc, char const *argv[])
             PR_Check(PR_record.lock,data.P ,PR_record.index,data.inf,PR_record.Sum,ind,pop,item,PR_ignore,PR_record.PR_Accumulation,PR_record.Category_Sum);
             iter++;
         }
-        Recovery_SSE_Formula(data.inf,data.Best_P,data.best_fitness,ind,item,category.size());
+        vector<vector<double> >  SSE_sum(category.size(),vector<double>(item-1,0));
+        Recovery_SSE_Category_Data_Sum(data.inf, SSE_sum,data.Best_P,ind,item,category.size());
+        Recovery_SSE_Formula(data.inf,SSE_sum,data.Best_P,data.best_fitness,ind,item,category.size());
         cout<<"Recovery SSE : "<<data.best_fitness<<endl;
         SSE_RUN.SSE_result[r]=data.best_fitness;
         if(SSE_RUN.SSE_result[r]<SSE_RUN.Best_SSE)
