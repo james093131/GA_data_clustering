@@ -1,4 +1,55 @@
 #include "function.h"
+void PR_Check(vector<int> &lock,vector<vector<int> > P ,vector<vector<int> > &check,vector<vector<double> > inf,vector<vector<double> > &sum,int ind,int pop,int item,int PR_ignore,int &Accumulation,vector<int>Category_Sum)
+{
+    if(Accumulation >  (ind*PR_coeffient) )
+    {
+       cout<<ind*PR_coeffient ;
+    }
+    else{
+
+    
+    for(int i=0;i<ind;i++){check[0][i]=0;}
+    for(int i=0;i<pop;i+=2)
+    {
+        for(int j=0;j<ind;j++)
+        {
+            if(P[i][j]==P[i+1][j])
+                check[0][j]++;
+        }
+    }
+    for(int i=0;i<ind;i++)
+    {
+        if(check[0][i] == (pop/2) )
+        {
+            check[1][i]++;
+                if(check[1][i] >= (PR_ignore/pop))//因為pop數量不同會導致不同有不同的evaluation所以除上pop在達到iter後才鎖住
+                {
+                    if(lock[i]==0)
+                    {
+                        Accumulation++;
+                        lock[i]=P[0][i]+1;
+                        cout<<i<<' ';
+                        Category_Sum[lock[i]-1]++;
+                        int category=P[0][i];
+                        for(int k=0;k<item-1;k++)
+                        {
+                            sum[category][k]+=inf[i][k];
+                        }
+                     
+                    }
+                       
+                
+                }
+            
+            }
+        else{
+                check[1][i]=0;
+            }
+        }
+        cout<<endl;
+    }
+    
+}
 int main(int argc, char const *argv[])
 {
     
@@ -7,6 +58,7 @@ int main(int argc, char const *argv[])
     int pop = atoi(argv[1]);
     int iteration = atoi(argv[2]);
     int run = atoi(argv[3]);
+    int PR_ignore =atoi(argv[4]);
     int ind;
     vector<int> convergence(iteration,0); 
     double clc=0;
@@ -44,6 +96,13 @@ int main(int argc, char const *argv[])
     START=clock();
     while(r<run)
     {
+        PR PR_record;
+        PR_record.index.resize(2,vector<int>(ind));//第一列儲存當個iter的pop是否一樣，第二列儲存該點已經幾輪沒變了
+        PR_record.lock.resize(ind);
+        PR_record.PR_Accumulation=0;
+        PR_record.Sum.resize(category.size(),vector<double>(item-1));
+        PR_record.Category_Sum.resize(category.size());
+        //----PR初始化完成
         create(data.P,pop,category.size(),ind);//隨機產生染色體
         for(int i=0;i<pop;i++)
         {
@@ -77,6 +136,7 @@ int main(int argc, char const *argv[])
             cout<<"Run"<<r+1<<'_'<<"Iteration"<<iter+1<<':'<<data.best_fitness<<endl;
             // cout<<iter+1<<": "<<data.accuracy<<endl;
             convergence[iter]+=data.best_fitness;
+            PR_Check(PR_record.lock,data.P ,PR_record.index,data.inf,PR_record.Sum,ind,pop,item,PR_ignore,PR_record.PR_Accumulation,PR_record.Category_Sum);
             iter++;
         }
         
