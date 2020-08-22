@@ -232,7 +232,7 @@ void finaloutput(int iteration,int pop,int run,int avgbestvalue,int best,vector<
     file<<"Iteration: "<<iteration<<endl;
     file<<"AVG_SSE : "<<avgbestvalue<<endl;
     file<<"AVG_PR_LOCK : "<<AVG_PR_Lock<<endl;
-    file<<"SSE Execution Time : "<<clc<<endl;
+    file<<"SSE Execution Time : "<<clc<<"(s)"<<endl;
     file<<"Execution Time :"<<(END - START) / CLOCKS_PER_SEC<<"(s)"<<endl;
     
     file<<"Best_SSE : "<<best<<endl;
@@ -252,4 +252,49 @@ void finaloutput(int iteration,int pop,int run,int avgbestvalue,int best,vector<
             
     }
 }
-// void recoverSSE()
+void Recovery_SSE_Category_Data_Sum(vector<vector<double> > &sum,vector<vector<double> > inf,vector<int> P,int ind,int item,int category)
+{
+   vector<int> k(category);
+    for(int i=0;i<ind;i++)
+    {
+        k[P[i]]++;
+    }
+    for(int i=0;i<ind;i++)
+    {
+        for(int j=0;j<item-1;j++)
+        {
+            sum[P[i]][j] += inf[i][j];
+        }
+    }
+    for(int i=0;i<category;i++)
+    {
+        for(int j=0;j<item-1;j++)
+        {
+            sum[i][j]=sum[i][j]/k[i];
+        }
+    }
+}
+void Recovery_SSE_Formula(vector<vector<double> > inf,vector<int> P,double &fit,int ind,int item,int category)
+{
+    
+    vector<vector<double> > sum;
+    sum.resize(category);
+    for(int z=0;z<category;z++) {sum[z].resize(item-1,0);}
+    Recovery_SSE_Category_Data_Sum(sum,inf,P,ind,item,category);
+    for(int i=0;i<category;i++){
+        for(int j=0;j<item-1;j++)
+        {
+            cout<<sum[i][j]<<' ';
+        }
+        cout<<endl;
+    }
+    fit=0.0;
+    for(int j=0;j<ind;j++)
+    {
+        for(int k=0;k<item-1;k++)
+        {
+            fit += pow(inf[j][k]-sum[P[j]][k],2);
+            
+        }
+    }
+}

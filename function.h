@@ -9,3 +9,4 @@ void crossover(vector<vector<int> > &P,int pop,int ind,int category,vector<int> 
 void Find_best(vector<double> fit,vector<vector<int> > P,vector<int> &Best_P,int ind,int item,int pop,double &best_fit);
 double Accuracy(vector<int> correct_category,vector<int> test_category,int ind);
 void finaloutput(int iteration,int pop,int run,int avgbestvalue,int best,vector<int>result,int AVG_PR_Lock,double correct,double START,double END,double clc);
+void Recovery_SSE_Formula(vector<vector<double> > inf,vector<int> P,double &fit,int ind,int item,int category);
