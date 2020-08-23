@@ -56,7 +56,7 @@ int main(int argc, char const *argv[])
     int run = atoi(argv[3]);
     int PR_ignore = atoi(argv[4]);//多少eva相同後忽略
     int ind;
-    vector<int> convergence(iteration,0); 
+    vector<double> convergence(iteration,0); 
     vector<string> temp;
     ind= readfile(temp);
     // cout<<ind<<endl;
@@ -107,6 +107,9 @@ int main(int argc, char const *argv[])
         PR_record.Sum.resize(category.size(),vector<double>(item-1));
         PR_record.Category_Sum.resize(category.size());
         //-----PR設定完成
+        Iter_Best Global;
+        Global.Global_Best_P.resize(ind);
+        Global.Global_Best_fitness=100000;
         create(data.P,pop,category.size(),ind);//隨機產生染色體
 
             vector<vector<double> > sum(pop,vector<double>(category.size()*(item-1),0));
@@ -114,10 +117,6 @@ int main(int argc, char const *argv[])
             SSE_Formula(data.inf,sum,correct_2d,data.fitness,pop,ind,item,PR_record.lock,PR_record.Sum,PR_record.Category_Sum,category.size());
         //SSE完成    
         Find_best(data.fitness,data.P,data.Best_P,ind,item,pop,data.best_fitness);
-        
-        data.P=tournament(data.fitness,data.P,pop,ind,data.Best_P);
-    
-        crossover(data.P,pop,ind,category.size(),PR_record.lock);
     
         //-----初始化完成
         int iter=0;
@@ -132,20 +131,36 @@ int main(int argc, char const *argv[])
         //SSE完成
             double end1=clock();   
             clc+=(end1 - start1) / CLOCKS_PER_SEC;
-            Find_best(data.fitness,data.P,data.Best_P,ind,item,pop,data.best_fitness);
             data.P=tournament(data.fitness,data.P,pop,ind,data.Best_P);
             crossover(data.P,pop,ind,category.size(),PR_record.lock);
-            cout<<"Run"<<r+1<<'_'<<"Iteration"<<iter+1<<':'<<data.best_fitness<<endl;
+            Find_best(data.fitness,data.P,data.Best_P,ind,item,pop,data.best_fitness);
+            if(data.best_fitness < Global.Global_Best_fitness)
+            {
+                Global.Global_Best_fitness=data.best_fitness;
+                for(int i=0;i<ind;i++)
+                {
+                    Global.Global_Best_P[i]=data.Best_P[i];
+                }
+            }
+            cout<<"Run"<<r+1<<'_'<<"Iteration"<<iter+1<<':'<<Global.Global_Best_fitness<<endl;
+            data.accuracy= Accuracy(correct_category,Global.Global_Best_P,ind);
             // cout<<iter+1<<": "<<data.accuracy<<endl;
-            convergence[iter]+=data.best_fitness;//畫收斂圖用的
+            convergence[iter]+=Global.Global_Best_fitness;//畫收斂圖用的
             PR_Check(PR_record.lock,data.P ,PR_record.index,data.inf,PR_record.Sum,ind,pop,item,PR_ignore,PR_record.PR_Accumulation,PR_record.Category_Sum);
             iter++;
         }
+        for(int i=0;i<ind;i++)
+        {
+            cout<<data.Best_P[i]<<' ';
+            if(i==49||i==99)
+                cout<<endl;
+        }
+        cout<<endl;
         vector<vector<double> >  SSE_sum(category.size(),vector<double>(item-1,0));
-        Recovery_SSE_Category_Data_Sum(data.inf, SSE_sum,data.Best_P,ind,item,category.size());
-        double T=Recovery_SSE_Formula(data.inf,SSE_sum,data.Best_P,ind,item);
-        cout<<"Recovery SSE : "<<T<<endl;
-        SSE_RUN.SSE_result[r]=data.best_fitness;
+        Recovery_SSE_Category_Data_Sum(data.inf, SSE_sum,Global.Global_Best_P,ind,item-1,category.size());
+        Global.Global_Best_fitness=Recovery_SSE_Formula(data.inf,SSE_sum,Global.Global_Best_P,ind,item-1);
+        cout<<"Recovery SSE : "<<Global.Global_Best_fitness<<endl;
+        SSE_RUN.SSE_result[r]=Global.Global_Best_fitness;
         if(SSE_RUN.SSE_result[r]<SSE_RUN.Best_SSE)
         {
             SSE_RUN.Best_SSE=SSE_RUN.SSE_result[r];

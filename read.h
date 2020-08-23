@@ -8,7 +8,7 @@
 #include<math.h>
 #include<vector>
 #define CR 0.95
-#define MR 0.1
+#define MR 0.05
 #define PR_coefficient 0.8
 using namespace std;
 class Iris_Data { 
@@ -27,6 +27,12 @@ public:
     int AVG_PR_Lock;
     int AVG_SSE;
     int Best_SSE;
+};
+class Iter_Best{
+    public:
+        vector<int> Global_Best_P;
+        double Global_Best_fitness;
+        double Global_best_accuracy;
 };
 class PR{
 public:

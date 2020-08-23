@@ -75,7 +75,7 @@ void SSE_Formula(vector<vector<double> > inf,vector<vector<double> > sum,vector<
                 for(int k=0;k<item-1;k++)
                 {
                     int clc=(item-1)*P[y][j];
-                    fit[y]+=pow(inf[j][k]-sum[y][clc+k],2);//sum logic
+                    fit[y]+=pow(inf[j][k]-sum[y][clc+k],2);
                 }
             }
         
@@ -128,9 +128,6 @@ void mutation(vector<int>&P,int ind,int category,vector<int>lock)//隨機選取�
         int a=rand()%category;
         P[c]=a;
     }
-   
-    
-    
 }
 void crossover(vector<vector<int> > &P,int pop,int ind,int category,vector<int> lock)
 {
@@ -214,24 +211,23 @@ double Accuracy(vector<int> correct_category,vector<int> test_category,int ind)
 }
 void Recovery_SSE_Category_Data_Sum(vector<vector<double> > inf,vector<vector<double> > &sum,vector<int> P,int ind,int item,int category)
 {
-   vector<int> k(category);
+    vector<int> k(category);
     for(int i=0;i<ind;i++)
     {
         k[P[i]]++;
-    }
-    for(int i=0;i<ind;i++)
-    {
-        for(int j=0;j<item-1;j++)
+        for(int j=0;j<item;j++)
         {
             sum[P[i]][j] += inf[i][j];
         }
     }
     for(int i=0;i<category;i++)
     {
-        for(int j=0;j<item-1;j++)
+        for(int j=0;j<item;j++)
         {
             sum[i][j] = sum[i][j]/k[i];
+            cout<<sum[i][j]<<' ';
         }
+        cout<<endl;
     }
 }
 double Recovery_SSE_Formula(vector<vector<double> > inf,vector<vector<double> > sum,vector<int> P,int ind,int item)
@@ -239,10 +235,14 @@ double Recovery_SSE_Formula(vector<vector<double> > inf,vector<vector<double> > 
     double temp=0;
     for(int j=0;j<ind;j++)
     {
-        for(int k=0;k<item-1;k++)
+        cout<<j+1<<' ';
+        for(int k=0;k<item;k++)
         {
-            temp += pow(inf[j][k]-sum[P[j]][k],2);
+            int ind=P[j];
+            temp += pow( (inf[j][k]-sum[ind][k]),2);
+            cout<<temp<<' ';
         }
+        cout<<endl;
     }
     return temp;
 }

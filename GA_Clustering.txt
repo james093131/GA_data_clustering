@@ -1560,4 +1560,251 @@ Category_Result :
 
 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 
 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 1 1 1 1 1 2 1 1 1 2 1 1 1 1 1 1 2 1 2 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
-2 2 2 2 2 2 1 1 2 2 2 1 2 2 2 2 2 2 2 1 1 2 2 1 2 2 1 2 2 1 2 2 2 1 2 2 2 2 2 2 2 2 2 2 1 2 1 2 2 1 
+2 2 2 2 2 2 1 1 2 2 2 1 2 2 2 2 2 2 2 1 1 2 2 1 2 2 1 2 2 1 2 2 2 1 2 2 2 2 2 2 2 2 2 2 1 2 1 2 2 1 Run : 1
+Population : 500
+Iteration: 100
+AVG_SSE : 89
+AVG_PR_LOCK : 0
+SSE Execution Time : 2.22749(s)
+Execution Time :2.94341(s)
+Best_SSE : 89
+Accuracy : 85.3333%
+Category_Result : 
+
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 1 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 
+1 1 1 1 1 1 1 1 1 2 1 1 1 1 1 1 1 1 2 1 1 1 2 1 1 1 1 1 1 1 1 1 1 2 1 1 1 1 1 2 1 1 1 1 1 1 1 1 0 1 
+2 2 2 2 2 2 1 2 2 2 2 1 2 2 2 2 2 2 2 1 2 2 2 1 2 2 1 2 2 1 2 2 2 1 2 1 2 2 1 2 2 2 1 2 2 2 1 2 2 1 Run : 1
+Population : 300
+Iteration: 100
+AVG_SSE : 89
+AVG_PR_LOCK : 0
+SSE Execution Time : 1.30714(s)
+Execution Time :1.73257(s)
+Best_SSE : 89
+Accuracy : 79.3333%
+Category_Result : 
+
+0 0 0 1 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 0 0 0 
+1 1 1 1 1 1 1 1 1 1 1 2 1 1 1 1 2 1 1 1 1 1 1 2 1 1 1 2 2 1 1 1 1 1 1 1 1 1 1 1 2 1 1 1 1 1 1 2 1 1 
+2 1 2 2 2 2 2 2 2 2 2 1 1 1 2 2 2 2 2 2 2 1 2 1 2 2 1 1 2 1 2 1 2 1 1 2 2 2 1 1 2 2 1 2 2 2 1 1 2 1 Run : 1
+Population : 300
+Iteration: 100
+AVG_SSE : 89
+AVG_PR_LOCK : 0
+SSE Execution Time : 1.31167(s)
+Execution Time :1.7443(s)
+Best_SSE : 89
+Accuracy : 84%
+Category_Result : 
+
+0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 1 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+1 1 1 1 1 1 1 1 1 1 1 1 1 2 1 1 1 1 1 1 2 1 1 1 1 1 1 1 1 1 1 1 2 2 2 1 1 1 1 1 1 1 1 1 2 1 1 1 1 1 
+2 1 2 2 2 2 1 2 2 2 2 2 2 1 1 2 2 2 2 1 2 1 2 1 2 1 1 2 2 2 1 2 2 1 2 2 2 1 2 1 2 2 2 2 2 2 2 2 2 1 Run : 1
+Population : 300
+Iteration: 100
+AVG_SSE : 89
+AVG_PR_LOCK : 0
+SSE Execution Time : 1.33302(s)
+Execution Time :1.76803(s)
+Best_SSE : 89
+Accuracy : 84%
+Category_Result : 
+
+0 0 0 0 0 1 0 0 1 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 1 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+1 1 1 1 1 1 2 0 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 1 1 1 1 1 1 1 1 1 1 1 1 2 2 1 1 1 1 2 1 1 1 
+2 2 1 2 2 2 1 2 2 2 1 1 1 2 2 2 2 2 2 2 2 2 2 1 2 2 2 2 2 2 1 2 2 1 1 2 2 1 1 2 2 2 2 2 2 2 1 2 2 1 Run : 1
+Population : 300
+Iteration: 100
+AVG_SSE : 89
+AVG_PR_LOCK : 0
+SSE Execution Time : 1.36232(s)
+Execution Time :1.80075(s)
+Best_SSE : 89
+Accuracy : 82%
+Category_Result : 
+
+0 0 0 0 0 0 0 0 1 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 1 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 
+1 1 1 1 1 1 2 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 1 1 1 1 2 1 1 1 2 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+2 1 2 2 2 2 2 2 2 2 2 2 2 2 1 2 1 2 2 1 2 1 2 1 2 1 1 2 2 1 1 2 1 2 2 2 2 1 2 2 2 1 2 2 2 1 2 1 1 1 Run : 1
+Population : 300
+Iteration: 100
+AVG_SSE : 89
+AVG_PR_LOCK : 0
+SSE Execution Time : 1.33673(s)
+Execution Time :1.76154(s)
+Best_SSE : 89
+Accuracy : 82%
+Category_Result : 
+
+0 1 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 1 0 1 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 
+1 1 1 1 1 1 1 1 2 1 1 1 1 1 1 1 1 1 1 1 2 1 1 2 1 1 2 1 1 1 1 1 1 1 1 1 1 2 1 1 1 1 1 1 1 1 1 1 0 1 
+2 1 2 2 2 2 2 1 1 2 1 2 2 2 2 2 2 2 2 1 2 2 2 1 1 2 1 2 2 1 2 2 2 1 1 2 2 2 2 2 2 1 1 2 2 1 1 2 2 2 Run : 1
+Population : 300
+Iteration: 100
+AVG_SSE : 89
+AVG_PR_LOCK : 0
+SSE Execution Time : 1.3417(s)
+Execution Time :1.76657(s)
+Best_SSE : 89
+Accuracy : 82.6667%
+Category_Result : 
+
+0 0 0 0 0 0 0 0 0 1 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 0 0 0 1 1 0 0 0 0 0 0 0 0 0 0 
+2 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 1 1 1 1 1 1 1 1 1 1 1 1 2 1 1 1 1 1 2 1 1 1 1 1 1 1 1 1 1 
+2 2 1 1 2 2 2 1 2 1 1 1 2 2 2 2 2 2 2 1 2 1 2 1 2 2 2 1 2 2 2 2 2 2 1 2 2 1 1 2 1 2 1 2 2 2 1 2 2 2 Run : 1
+Population : 300
+Iteration: 100
+AVG_SSE : 89
+AVG_PR_LOCK : 0
+SSE Execution Time : 1.29392(s)
+Execution Time :1.71964(s)
+Best_SSE : 89
+Accuracy : 87.3333%
+Category_Result : 
+
+0 0 0 0 0 1 0 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 1 2 1 1 1 1 1 1 1 1 1 1 2 1 1 1 1 1 1 1 1 1 1 1 1 1 2 1 1 
+2 1 2 2 2 2 2 2 2 2 2 2 2 2 2 2 1 2 2 1 1 1 2 1 2 2 2 2 2 1 2 2 1 1 2 2 2 1 2 2 2 2 2 2 2 1 2 2 2 2 Run : 1
+Population : 300
+Iteration: 100
+AVG_SSE : 91
+AVG_PR_LOCK : 0
+SSE Execution Time : 1.31368(s)
+Execution Time :1.73345(s)
+Best_SSE : 91
+Accuracy : 77.3333%
+Category_Result : 
+
+0 1 0 0 0 0 0 0 1 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+1 1 2 1 1 1 2 1 1 1 0 1 1 2 1 1 2 1 1 1 1 1 1 1 2 1 2 2 1 1 1 2 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+2 2 2 1 2 2 1 1 1 2 1 2 2 2 2 2 2 2 2 2 1 1 2 1 2 2 2 1 1 2 2 2 2 2 1 1 2 2 1 2 2 1 1 1 1 2 1 2 2 2 Run : 1
+Population : 300
+Iteration: 100
+AVG_SSE : 89
+AVG_PR_LOCK : 0
+SSE Execution Time : 1.37296(s)
+Execution Time :1.80703(s)
+Best_SSE : 89
+Accuracy : 77.3333%
+Category_Result : 
+
+0 0 0 1 0 0 0 1 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 1 0 0 0 0 0 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 1 2 1 1 1 2 2 1 1 1 1 1 2 2 1 1 1 2 1 1 1 1 1 1 0 1 2 1 1 
+2 2 2 1 2 2 1 2 2 2 2 1 2 0 2 2 1 2 2 1 1 1 1 2 1 2 1 1 2 1 2 2 2 1 1 2 2 2 1 2 2 1 2 2 2 1 2 2 2 1 Run : 1
+Population : 300
+Iteration: 100
+AVG_SSE : 89
+AVG_PR_LOCK : 0
+SSE Execution Time : 1.32746(s)
+Execution Time :1.74928(s)
+Best_SSE : 89
+Accuracy : 80%
+Category_Result : 
+
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 1 0 0 0 1 0 0 0 0 0 0 1 0 0 1 1 0 0 0 0 
+1 1 1 1 2 1 2 1 1 1 1 1 1 1 1 1 1 1 1 1 2 1 1 1 1 1 1 2 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 1 1 2 1 0 1 
+2 1 2 2 2 2 1 2 1 2 1 2 1 2 1 2 1 2 2 1 2 2 2 2 2 1 1 1 2 1 2 2 2 1 2 2 2 2 1 1 2 1 2 2 2 2 2 2 2 1 Run : 1
+Population : 300
+Iteration: 100
+AVG_SSE : 89
+AVG_PR_LOCK : 0
+SSE Execution Time : 1.31662(s)
+Execution Time :1.73929(s)
+Best_SSE : 89
+Accuracy : 86%
+Category_Result : 
+
+0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 1 0 0 
+1 1 1 1 1 1 1 1 1 1 1 1 1 2 1 1 1 1 1 1 1 1 1 2 1 1 1 1 2 1 1 1 1 2 1 2 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+2 1 2 2 2 2 1 2 1 1 2 2 2 1 2 2 1 2 2 1 2 2 2 2 2 1 2 1 2 1 2 2 2 1 2 2 2 2 1 2 2 2 2 2 2 2 2 2 2 2 Run : 1
+Population : 300
+Iteration: 100
+AVG_SSE : 89
+AVG_PR_LOCK : 0
+SSE Execution Time : 1.38311(s)
+Execution Time :1.82156(s)
+Best_SSE : 89
+Accuracy : 82.6667%
+Category_Result : 
+
+0 1 0 0 0 0 0 0 1 0 0 1 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+1 1 1 1 1 1 2 1 1 1 1 1 1 2 1 1 2 1 2 2 1 1 1 2 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 1 1 1 1 1 
+2 1 2 1 2 2 1 2 2 2 2 2 2 2 2 2 2 2 2 1 1 1 2 2 2 2 2 1 2 2 1 2 2 1 1 2 2 2 1 2 2 1 2 2 1 2 1 2 2 2 Run : 1
+Population : 300
+Iteration: 100
+AVG_SSE : 89
+AVG_PR_LOCK : 0
+SSE Execution Time : 1.32514(s)
+Execution Time :1.75518(s)
+Best_SSE : 89
+Accuracy : 78%
+Category_Result : 
+
+0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 1 0 
+1 1 1 1 1 1 2 0 2 2 1 1 2 1 1 1 1 1 1 1 1 1 1 1 1 1 2 1 1 1 1 1 1 1 2 2 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+2 1 2 1 2 2 1 2 2 2 1 2 2 2 2 1 2 2 2 1 2 2 2 1 2 1 1 1 1 1 2 2 2 1 1 2 2 2 1 2 2 1 1 2 2 1 2 2 2 1 Run : 1
+Population : 300
+Iteration: 100
+AVG_SSE : 89
+AVG_PR_LOCK : 0
+SSE Execution Time : 1.3137(s)
+Execution Time :1.7367(s)
+Best_SSE : 89
+Accuracy : 85.3333%
+Category_Result : 
+
+0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 1 0 0 0 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 
+1 1 1 1 1 1 1 1 1 1 1 2 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 1 1 1 1 1 1 2 1 2 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+2 2 2 2 2 2 1 2 2 2 2 2 2 2 2 1 1 2 1 1 2 1 2 2 2 2 1 1 2 1 2 2 2 2 1 2 2 2 2 1 2 2 2 1 2 2 2 1 2 2 Run : 1
+Population : 300
+Iteration: 100
+AVG_SSE : 176
+AVG_PR_LOCK : 0
+SSE Execution Time : 1.37006(s)
+Execution Time :1.81418(s)
+Best_SSE : 176
+Accuracy : 81.3333%
+Category_Result : 
+
+0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 1 0 0 0 
+2 1 2 1 2 1 1 1 1 1 1 2 1 1 1 1 1 1 1 1 2 1 1 1 1 1 1 1 2 1 1 1 1 2 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+2 1 2 2 1 2 1 1 2 2 2 2 2 2 2 2 2 2 2 1 1 1 2 1 2 2 1 1 2 1 2 2 2 2 1 2 2 2 2 2 1 1 2 2 2 1 2 2 2 1 Run : 1
+Population : 300
+Iteration: 100
+AVG_SSE : 197
+AVG_PR_LOCK : 0
+SSE Execution Time : 1.35694(s)
+Execution Time :1.79871(s)
+Best_SSE : 197
+Accuracy : 80%
+Category_Result : 
+
+0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 0 0 0 0 0 1 0 0 0 0 0 0 0 1 0 1 0 0 1 0 0 0 0 0 
+2 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 1 1 1 1 1 1 1 2 1 1 1 1 1 1 2 1 0 1 2 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+2 1 2 2 2 1 1 2 1 2 1 2 2 1 2 2 1 2 2 1 2 1 2 1 2 2 1 2 2 1 2 1 2 1 2 2 2 2 1 1 1 2 2 2 2 2 2 2 2 2 Run : 1
+Population : 300
+Iteration: 100
+AVG_SSE : 206
+AVG_PR_LOCK : 0
+SSE Execution Time : 1.33713(s)
+Execution Time :1.76345(s)
+Best_SSE : 206
+Accuracy : 80.6667%
+Category_Result : 
+
+0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 1 1 1 0 0 0 0 1 0 0 0 1 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 1 2 1 1 1 1 1 1 1 1 1 1 1 1 1 2 1 1 1 1 1 0 
+2 2 1 2 2 2 2 2 2 2 2 2 2 2 1 2 2 2 2 1 2 2 2 1 2 2 2 1 2 2 1 2 2 1 1 2 2 2 1 1 2 1 1 1 2 1 1 1 1 2 Run : 1
+Population : 300
+Iteration: 100
+AVG_SSE : 165
+AVG_PR_LOCK : 0
+SSE Execution Time : 1.34562(s)
+Execution Time :1.77095(s)
+Best_SSE : 165
+Accuracy : 83.3333%
+Category_Result : 
+
+0 0 0 1 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 1 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 
+1 1 1 1 1 1 1 1 1 1 1 1 1 2 1 1 1 1 1 1 2 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 1 2 1 1 1 2 1 0 1 1 1 1 1 1 
+2 1 1 1 2 2 1 2 2 2 2 2 2 2 2 2 2 2 2 2 2 1 2 2 2 2 1 2 2 1 2 2 1 1 1 2 2 2 1 1 2 1 1 2 2 2 2 2 2 2 
