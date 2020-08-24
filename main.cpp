@@ -140,15 +140,15 @@ int main(int argc, char const *argv[])
                 {
                     Global.Global_Best_P[i]=data.Best_P[i];
                 }
-                Global.Global_best_accuracy= Accuracy(correct_category,Global.Global_Best_P,ind);
             }
             cout<<"Run"<<r+1<<'_'<<"Iteration"<<iter+1<<':'<<Global.Global_Best_fitness<<endl;
             // cout<<iter+1<<": "<<data.accuracy<<endl;
-            convergence[iter]+=Global.Global_best_accuracy;//畫收斂圖用的可選擇要畫ＳＳＥ值還是準確率 
-                                                          //Global.Global_Best_fitness or data.accuracy
+            convergence[iter]+=Global.Global_Best_fitness;//畫收斂圖用的(ＳＳＥ值)
+                                                         
             PR_Check(PR_record.lock,data.P ,PR_record.index,data.inf,PR_record.Sum,ind,pop,item,PR_ignore,PR_record.PR_Accumulation,PR_record.Category_Sum);
             iter++;
         }
+        Global.Global_best_accuracy= Accuracy(correct_category,Global.Global_Best_P,ind);
         ////1個run完成
         ///PR後將ＳＳＳＥ重算 ---目前怪怪的
         vector<vector<double> >  SSE_sum(category.size(),vector<double>(item-1,0));

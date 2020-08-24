@@ -1,3 +1,4 @@
+g++ -o GA readfile.cpp main.cpp function.cpp
 ./GA 500(pop) 200(iteration) 30(run) 6000(PR_ignore)
 
 POP 500(染色體數量)

@@ -197,8 +197,10 @@ void Find_best(vector<double> fit,vector<vector<int> > P,vector<int> &Best_P,int
         Best_P[i]=P[best_index][i];
     }
 }
-void Regular(vector<int> &test_category,int ind)
+
+double Accuracy(vector<int> correct_category,vector<int> test_category,int ind)
 {
+    double r=0;
     int a=0;int b=0;int c=0;
     for(int i=0;i<ind/3;i++)
     {
@@ -209,27 +211,14 @@ void Regular(vector<int> &test_category,int ind)
         else if(test_category[i]==2)
             c++;
     }
-     if( b >= c && b > a)
-        {
-            for(int i=0;i<ind/3;i++)
-            {
-                if(test_category[i]==1)
-                    test_category[i]=0;
-                else if(test_category[i]==0)
-                    test_category[i]=1;
-            }
-        }
-    else if( c > b && c > a)
-    {
-         for(int i=0;i<ind/3;i++)
-            {
-                if(test_category[i]==2)
-                    test_category[i]=0;
-                else if(test_category[i]==0)
-                    test_category[i]=2;
-            }
-    }
-     a=0; b=0; c=0;
+    if(a>=b &&a>=c)
+        r+=a;
+    else if(b>a && b>c)
+        r+=b;
+    else 
+        r+=c;
+    
+    a=0; b=0; c=0;
     for(int i=ind/3;i<ind*2/3;i++)
     {
         if(test_category[i]==0)
@@ -239,26 +228,13 @@ void Regular(vector<int> &test_category,int ind)
         else if(test_category[i]==2)
             c++;
     }
-     if( a >= c && a > b)
-        {
-            for(int i=ind/3;i<ind*2/3;i++)
-            {
-                if(test_category[i]==0)
-                    test_category[i]=1;
-                else if(test_category[i]==1)
-                    test_category[i]=0;
-            }
-        }
-    else if( c > a && c > b)
-    {
-         for(int i=ind/3;i<ind*2/3;i++)
-            {
-                if(test_category[i]==2)
-                    test_category[i]=1;
-                else if(test_category[i]==1)
-                    test_category[i]=2;
-            }
-    }
+    if(a>=b &&a>=c)
+        r+=a;
+    else if(b>a && b>c)
+        r+=b;
+    else 
+        r+=c;
+    
     a=0; b=0; c=0;
     for(int i=ind*2/3;i<ind;i++)
     {
@@ -269,37 +245,12 @@ void Regular(vector<int> &test_category,int ind)
         else if(test_category[i]==2)
             c++;
     }
-    if( a >= b && a > c)
-        {
-            for(int i=ind*2/3;i<ind;i++)
-            {
-                if(test_category[i]==0)
-                    test_category[i]=2;
-                else if(test_category[i]==2)
-                    test_category[i]=0;
-            }
-        }
-    else if( b > a && b > c)
-    {
-         for(int i=0;i<ind/3;i++)
-            {
-                if(test_category[i]==1)
-                    test_category[i]=2;
-                else if(test_category[i]==2)
-                    test_category[i]=1;
-            }
-    }
-}
-double Accuracy(vector<int> correct_category,vector<int> test_category,int ind)
-{
-    double r=0;
-    Regular(test_category,ind);
-    int a=0;int b=0;int c=0;
-    for(int i=0;i<ind;i++)
-    {
-        if(test_category[i]==correct_category[i])
-            r++;
-    }
+    if(a>=b &&a>=c)
+        r+=a;
+    else if(b>a && b>c)
+        r+=b;
+    else 
+        r+=c;
     r=r/ind;
     return r;
 }
