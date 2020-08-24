@@ -10,4 +10,4 @@ void Find_best(vector<double> fit,vector<vector<int> > P,vector<int> &Best_P,int
 double Accuracy(vector<int> correct_category,vector<int> test_category,int ind);
 void Recovery_SSE_Category_Data_Sum(vector<vector<double> > inf,vector<vector<double> > &sum,vector<int> P,int ind,int item,int category);
 double Recovery_SSE_Formula(vector<vector<double> > inf,vector<vector<double> > sum,vector<int> P,int ind,int item);
-void finaloutput(int iteration,int pop,int run,int avgbestvalue,int best,vector<int>result,int AVG_PR_Lock,double correct,double START,double END,double clc);
+void finaloutput(int iteration,int pop,int run,int avgbestvalue,int best,vector<int>result,int AVG_PR_Lock,double correct,double START,double END,double clc,int PR_ignore);

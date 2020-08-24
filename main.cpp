@@ -56,18 +56,18 @@ int main(int argc, char const *argv[])
     int run = atoi(argv[3]);
     int PR_ignore = atoi(argv[4]);//多少eva相同後忽略
     int ind;
-    vector<double> convergence(iteration,0); 
-    vector<string> temp;
+    vector<double> convergence(iteration,0); //收斂圖用的
+    vector<string> temp;//用來讀檔的暫存vector
     ind= readfile(temp);
     // cout<<ind<<endl;
     //-------讀檔結束
-    int item=getinf(temp);
+    int item=getinf(temp);//getif用,來區分一項有幾個資訊
     // cout<<item<<endl;
-    vector<vector<string> > aftsplit(ind,vector<string>(item));
-    arrangereadfile(aftsplit,temp,ind,item);
-    vector<string> category=make_category(aftsplit, ind, item);
-    vector<vector<double> > clean_data(ind,vector<double>(item));
-    make_clean_data(clean_data,aftsplit,category,ind,item);
+    vector<vector<string> > aftsplit(ind,vector<string>(item));//二維儲存用，切開的資訊
+    arrangereadfile(aftsplit,temp,ind,item);//資料整理成 2D-vector型式
+    vector<string> category=make_category(aftsplit, ind, item);//將種類進行分類儲存到vector中
+    vector<vector<double> > clean_data(ind,vector<double>(item));//整理成double的資料
+    make_clean_data(clean_data,aftsplit,category,ind,item);//將所有資料以double方式儲存 花的名稱以0,1,2方式取代
    //--------------資料整理完成
     Run_Best SSE_RUN;
     SSE_RUN.SSE_result.resize(run);
@@ -114,7 +114,7 @@ int main(int argc, char const *argv[])
 
             vector<vector<double> > sum(pop,vector<double>(category.size()*(item-1),0));
             SSE_Category_Data_Sum(data.inf, sum,PR_record.Sum,data.P,PR_record.lock,ind,pop,item,category.size(),PR_record.Category_Sum);
-            SSE_Formula(data.inf,sum,correct_2d,data.fitness,pop,ind,item,PR_record.lock,PR_record.Sum,PR_record.Category_Sum,category.size());
+            SSE_Formula(data.inf,sum,data.P,data.fitness,pop,ind,item,PR_record.lock,PR_record.Sum,PR_record.Category_Sum,category.size());
         //SSE完成    
         Find_best(data.fitness,data.P,data.Best_P,ind,item,pop,data.best_fitness);
     
@@ -122,72 +122,70 @@ int main(int argc, char const *argv[])
         int iter=0;
         while(iter<iteration)
         {
-            double start1=clock();
+            double start1=clock();//儲存ＳＳＥ佔用的時間（開始
             vector<vector<double> > sum(pop,vector<double>(category.size()*(item-1),0));
             SSE_Category_Data_Sum(data.inf, sum,PR_record.Sum,data.P,PR_record.lock,ind,pop,item,category.size(),PR_record.Category_Sum);
-            SSE_Formula(data.inf,sum,correct_2d,data.fitness,pop,ind,item,PR_record.lock,PR_record.Sum,PR_record.Category_Sum,category.size());
+            SSE_Formula(data.inf,sum,data.P,data.fitness,pop,ind,item,PR_record.lock,PR_record.Sum,PR_record.Category_Sum,category.size());
                 
-                // cout<<data.fitness[i]<<endl;
         //SSE完成
-            double end1=clock();   
-            clc+=(end1 - start1) / CLOCKS_PER_SEC;
-            data.P=tournament(data.fitness,data.P,pop,ind,data.Best_P);
-            crossover(data.P,pop,ind,category.size(),PR_record.lock);
-            Find_best(data.fitness,data.P,data.Best_P,ind,item,pop,data.best_fitness);
-            if(data.best_fitness < Global.Global_Best_fitness)
+            double end1=clock();   //儲存ＳＳＥ佔用的時間（結束
+            clc+=(end1 - start1) / CLOCKS_PER_SEC;//儲存ＳＳＥ佔用的時間（時間
+            data.P=tournament(data.fitness,data.P,pop,ind,data.Best_P);//選擇
+            crossover(data.P,pop,ind,category.size(),PR_record.lock);//crossover+mutation
+            Find_best(data.fitness,data.P,data.Best_P,ind,item,pop,data.best_fitness);//找出最好的那條並儲存
+            if(data.best_fitness < Global.Global_Best_fitness)//儲存全局最優解
             {
                 Global.Global_Best_fitness=data.best_fitness;
                 for(int i=0;i<ind;i++)
                 {
                     Global.Global_Best_P[i]=data.Best_P[i];
                 }
+                Global.Global_best_accuracy= Accuracy(correct_category,Global.Global_Best_P,ind);
             }
             cout<<"Run"<<r+1<<'_'<<"Iteration"<<iter+1<<':'<<Global.Global_Best_fitness<<endl;
-            data.accuracy= Accuracy(correct_category,Global.Global_Best_P,ind);
             // cout<<iter+1<<": "<<data.accuracy<<endl;
-            convergence[iter]+=Global.Global_Best_fitness;//畫收斂圖用的
+            convergence[iter]+=Global.Global_best_accuracy;//畫收斂圖用的可選擇要畫ＳＳＥ值還是準確率 
+                                                          //Global.Global_Best_fitness or data.accuracy
             PR_Check(PR_record.lock,data.P ,PR_record.index,data.inf,PR_record.Sum,ind,pop,item,PR_ignore,PR_record.PR_Accumulation,PR_record.Category_Sum);
             iter++;
         }
-        for(int i=0;i<ind;i++)
-        {
-            cout<<data.Best_P[i]<<' ';
-            if(i==49||i==99)
-                cout<<endl;
-        }
-        cout<<endl;
+        ////1個run完成
+        ///PR後將ＳＳＳＥ重算 ---目前怪怪的
         vector<vector<double> >  SSE_sum(category.size(),vector<double>(item-1,0));
         Recovery_SSE_Category_Data_Sum(data.inf, SSE_sum,Global.Global_Best_P,ind,item-1,category.size());
         Global.Global_Best_fitness=Recovery_SSE_Formula(data.inf,SSE_sum,Global.Global_Best_P,ind,item-1);
         cout<<"Recovery SSE : "<<Global.Global_Best_fitness<<endl;
+
+        ////儲存每一ＲＵＮ的最佳ＳＳＥ
         SSE_RUN.SSE_result[r]=Global.Global_Best_fitness;
         if(SSE_RUN.SSE_result[r]<SSE_RUN.Best_SSE)
         {
             SSE_RUN.Best_SSE=SSE_RUN.SSE_result[r];
             for(int i=0;i<ind;i++)
             {
-                SSE_RUN.Best_SSE_Category[i]=data.Best_P[i];
+                SSE_RUN.Best_SSE_Category[i]=Global.Global_Best_P[i];
             }
         }
         SSE_RUN.AVG_PR_Lock += PR_record.PR_Accumulation;
+        SSE_RUN.AVG_Accuracy+=Global.Global_best_accuracy;
         r++;
     }
     END=clock();
-    for(int i=0;i<run;i++)
+    for(int i=0;i<run;i++)//平均ＳＳＥ
     {
         SSE_RUN.AVG_SSE+=SSE_RUN.SSE_result[i];
     }
     SSE_RUN.AVG_SSE=SSE_RUN.AVG_SSE/run;
+    SSE_RUN.AVG_Accuracy=SSE_RUN.AVG_Accuracy/run;
     SSE_RUN.AVG_PR_Lock=SSE_RUN.AVG_PR_Lock/run;
-    double correct=Accuracy(correct_category,SSE_RUN.Best_SSE_Category,ind);
-    finaloutput(iteration,pop,run,SSE_RUN.AVG_SSE,SSE_RUN.Best_SSE,SSE_RUN.Best_SSE_Category,SSE_RUN.AVG_PR_Lock,correct,START,END,clc);
+    finaloutput(iteration,pop,run,SSE_RUN.AVG_SSE,SSE_RUN.Best_SSE,SSE_RUN.Best_SSE_Category,SSE_RUN.AVG_PR_Lock,SSE_RUN.AVG_Accuracy,START,END,clc,PR_ignore);
     
-    fstream file1;
+    fstream file1;//收斂圖
     file1.open("GA_Clustering_Convergence.txt",ios::out);
-   for(int i=0;i<iteration;i++)
-   {
+    for(int i=0;i<iteration;i++)
+    {
        convergence[i]=convergence[i]/run;
        file1<<(i+1)*pop<<' '<<convergence[i]<<endl;
-   }
+    }
    
 }

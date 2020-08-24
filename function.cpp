@@ -197,9 +197,103 @@ void Find_best(vector<double> fit,vector<vector<int> > P,vector<int> &Best_P,int
         Best_P[i]=P[best_index][i];
     }
 }
+void Regular(vector<int> &test_category,int ind)
+{
+    int a=0;int b=0;int c=0;
+    for(int i=0;i<ind/3;i++)
+    {
+        if(test_category[i]==0)
+            a++;
+        else if(test_category[i]==1)
+            b++;
+        else if(test_category[i]==2)
+            c++;
+    }
+     if( b >= c && b > a)
+        {
+            for(int i=0;i<ind/3;i++)
+            {
+                if(test_category[i]==1)
+                    test_category[i]=0;
+                else if(test_category[i]==0)
+                    test_category[i]=1;
+            }
+        }
+    else if( c > b && c > a)
+    {
+         for(int i=0;i<ind/3;i++)
+            {
+                if(test_category[i]==2)
+                    test_category[i]=0;
+                else if(test_category[i]==0)
+                    test_category[i]=2;
+            }
+    }
+     a=0; b=0; c=0;
+    for(int i=ind/3;i<ind*2/3;i++)
+    {
+        if(test_category[i]==0)
+            a++;
+        else if(test_category[i]==1)
+            b++;
+        else if(test_category[i]==2)
+            c++;
+    }
+     if( a >= c && a > b)
+        {
+            for(int i=ind/3;i<ind*2/3;i++)
+            {
+                if(test_category[i]==0)
+                    test_category[i]=1;
+                else if(test_category[i]==1)
+                    test_category[i]=0;
+            }
+        }
+    else if( c > a && c > b)
+    {
+         for(int i=ind/3;i<ind*2/3;i++)
+            {
+                if(test_category[i]==2)
+                    test_category[i]=1;
+                else if(test_category[i]==1)
+                    test_category[i]=2;
+            }
+    }
+    a=0; b=0; c=0;
+    for(int i=ind*2/3;i<ind;i++)
+    {
+        if(test_category[i]==0)
+            a++;
+        else if(test_category[i]==1)
+            b++;
+        else if(test_category[i]==2)
+            c++;
+    }
+    if( a >= b && a > c)
+        {
+            for(int i=ind*2/3;i<ind;i++)
+            {
+                if(test_category[i]==0)
+                    test_category[i]=2;
+                else if(test_category[i]==2)
+                    test_category[i]=0;
+            }
+        }
+    else if( b > a && b > c)
+    {
+         for(int i=0;i<ind/3;i++)
+            {
+                if(test_category[i]==1)
+                    test_category[i]=2;
+                else if(test_category[i]==2)
+                    test_category[i]=1;
+            }
+    }
+}
 double Accuracy(vector<int> correct_category,vector<int> test_category,int ind)
 {
     double r=0;
+    Regular(test_category,ind);
     int a=0;int b=0;int c=0;
     for(int i=0;i<ind;i++)
     {
@@ -225,9 +319,7 @@ void Recovery_SSE_Category_Data_Sum(vector<vector<double> > inf,vector<vector<do
         for(int j=0;j<item;j++)
         {
             sum[i][j] = sum[i][j]/k[i];
-            cout<<sum[i][j]<<' ';
         }
-        cout<<endl;
     }
 }
 double Recovery_SSE_Formula(vector<vector<double> > inf,vector<vector<double> > sum,vector<int> P,int ind,int item)
@@ -235,18 +327,15 @@ double Recovery_SSE_Formula(vector<vector<double> > inf,vector<vector<double> > 
     double temp=0;
     for(int j=0;j<ind;j++)
     {
-        cout<<j+1<<' ';
         for(int k=0;k<item;k++)
         {
             int ind=P[j];
             temp += pow( (inf[j][k]-sum[ind][k]),2);
-            cout<<temp<<' ';
         }
-        cout<<endl;
     }
     return temp;
 }
-void finaloutput(int iteration,int pop,int run,int avgbestvalue,int best,vector<int>result,int AVG_PR_Lock,double correct,double START,double END,double clc)
+void finaloutput(int iteration,int pop,int run,int avgbestvalue,int best,vector<int>result,int AVG_PR_Lock,double correct,double START,double END,double clc,int PR_ignore)
 {
     fstream file;//寫檔
 	file.open("GA_Clustering.txt",ios::app);
@@ -254,23 +343,25 @@ void finaloutput(int iteration,int pop,int run,int avgbestvalue,int best,vector<
     cout<<"Run : "<<run<<endl;
     cout<<"Population : "<<pop<<endl;
     cout<<"Iteration: "<<iteration<<endl;
+    cout<<"PR Evaluation: "<<PR_ignore<<endl;
     cout<<"AVG_SSE : "<<avgbestvalue<<endl;
     cout<<"AVG_PR_LOCK : "<<AVG_PR_Lock<<endl;
     cout<<"Execution Time :"<<(END - START) / CLOCKS_PER_SEC<<"(s)"<<endl;
     cout<<"SSE Execution Time : "<<clc<<endl;
     cout<<"Best_SSE : "<<best<<endl;
-    cout<<"Accuracy : "<<correct*100<<'%'<<endl;
+    cout<<"AVG_Accuracy : "<<correct*100<<'%'<<endl;
    
     file<<"Run : "<<run<<endl;
     file<<"Population : "<<pop<<endl;
     file<<"Iteration: "<<iteration<<endl;
+    file<<"PR Evaluation: "<<PR_ignore<<endl;
     file<<"AVG_SSE : "<<avgbestvalue<<endl;
     file<<"AVG_PR_LOCK : "<<AVG_PR_Lock<<endl;
     file<<"SSE Execution Time : "<<clc<<"(s)"<<endl;
     file<<"Execution Time :"<<(END - START) / CLOCKS_PER_SEC<<"(s)"<<endl;
     
     file<<"Best_SSE : "<<best<<endl;
-    file<<"Accuracy : "<<correct*100<<'%'<<endl;
+    file<<"AVG_Accuracy : "<<correct*100<<'%'<<endl;
     file<<"Category_Result : "<<endl; 
     file<<endl;
 
@@ -285,5 +376,6 @@ void finaloutput(int iteration,int pop,int run,int avgbestvalue,int best,vector<
         }
             
     }
+    file<<endl;
     file.close();
 }
