@@ -1,0 +1,11 @@
+start /w .\GA.exe 600 200 30 120
+start /w .\GA.exe 600 200 30 360
+start /w .\GA.exe 600 200 30 600
+start /w .\GA.exe 600 200 30 1200
+start /w .\GA.exe 600 200 30 2400
+start /w .\GA.exe 600 200 30 3000
+start /w .\GA.exe 600 200 30 3600
+start /w .\GA.exe 600 200 30 4800
+start /w .\GA.exe 600 200 30 6000
+start /w .\GA.exe 600 200 30 12000
+start /w .\GA.exe 600 200 30 120000
