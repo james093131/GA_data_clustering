@@ -2712,16 +2712,6 @@ Category_Result :
 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
 2 0 2 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 2 2 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
 2 0 2 2 2 2 0 2 2 2 2 2 2 2 2 2 2 2 2 0 2 0 2 0 2 2 0 0 2 2 2 2 2 2 2 2 2 0 0 2 2 2 0 2 2 2 0 2 2 0 
-Run : 30
-Population : 600
-Iteration: 200
-PR Evaluation: 120000
-AVG_SSE : 79
-AVG_PR_LOCK : 0
-SSE Execution Time : 206.763(s)
-Execution Time :230.368(s)
-Best_SSE : 78
-AVG_Accuracy : 89.6%
-Category_Result : 
+
 
 
