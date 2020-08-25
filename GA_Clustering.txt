@@ -2499,3 +2499,229 @@ Category_Result :
 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
 1 1 1 2 1 2 1 2 1 2 2 2 1 1 2 2 2 2 2 2 2 2 1 2 2 1 1 1 2 2 2 2 2 1 2 1 1 2 2 2 2 2 2 2 2 2 2 2 2 2 
 1 1 1 1 1 1 1 1 2 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 1 1 1 1 1 1 1 2 1 1 1 
+Run : 30
+Population : 600
+Iteration: 200
+PR Evaluation: 120
+AVG_SSE : 162
+AVG_PR_LOCK : 122
+SSE Execution Time : 89.978(s)
+Execution Time :111.648(s)
+Best_SSE : 105
+AVG_Accuracy : 77.9111%
+Category_Result : 
+
+2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+1 1 1 0 0 1 1 0 1 0 0 1 0 1 0 1 0 0 1 0 1 1 1 1 0 1 1 1 1 0 0 0 1 1 1 1 1 1 0 0 0 1 0 0 0 0 0 1 0 0 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 0 1 1 1 1 1 1 1 1 1 1 1 1 1 
+Run : 30
+Population : 600
+Iteration: 200
+PR Evaluation: 360
+AVG_SSE : 164
+AVG_PR_LOCK : 121
+SSE Execution Time : 88.936(s)
+Execution Time :110.622(s)
+Best_SSE : 119
+AVG_Accuracy : 77.1111%
+Category_Result : 
+
+2 2 2 2 2 2 2 2 2 2 0 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+1 1 1 0 1 1 1 0 1 0 0 1 0 1 0 1 1 1 1 1 1 1 1 1 1 1 1 1 1 0 0 0 0 1 1 1 1 1 0 0 1 1 0 0 0 1 1 0 0 0 
+1 1 1 1 1 1 0 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 0 1 1 1 1 1 1 0 1 1 1 1 1 1 1 0 1 1 1 1 1 1 1 
+Run : 30
+Population : 600
+Iteration: 200
+PR Evaluation: 600
+AVG_SSE : 165
+AVG_PR_LOCK : 122
+SSE Execution Time : 88.436(s)
+Execution Time :110.032(s)
+Best_SSE : 115
+AVG_Accuracy : 76.9556%
+Category_Result : 
+
+2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+0 0 0 1 0 1 0 2 0 1 2 1 1 1 1 0 1 1 1 1 0 1 0 1 0 0 0 0 0 1 1 1 1 0 0 0 0 1 1 1 0 1 1 2 1 1 1 1 1 0 
+0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 1 1 0 1 1 0 0 0 
+Run : 30
+Population : 600
+Iteration: 200
+PR Evaluation: 1200
+AVG_SSE : 154
+AVG_PR_LOCK : 121
+SSE Execution Time : 90.269(s)
+Execution Time :111.819(s)
+Best_SSE : 114
+AVG_Accuracy : 78.2889%
+Category_Result : 
+
+2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+1 1 1 0 1 0 1 0 1 0 0 0 0 1 0 1 0 0 1 0 1 0 1 1 1 1 1 1 0 0 2 2 0 1 0 1 1 0 0 0 1 1 0 2 0 0 0 0 2 0 
+1 1 1 1 1 1 0 1 1 1 1 0 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 0 0 1 1 1 1 1 1 1 1 1 1 
+Run : 30
+Population : 600
+Iteration: 200
+PR Evaluation: 2400
+AVG_SSE : 133
+AVG_PR_LOCK : 122
+SSE Execution Time : 92.289(s)
+Execution Time :113.903(s)
+Best_SSE : 103
+AVG_Accuracy : 81.1111%
+Category_Result : 
+
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+0 0 0 2 0 2 0 1 2 2 2 2 2 2 2 0 2 2 2 2 0 2 0 0 0 2 0 0 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 1 2 2 2 2 2 2 
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 2 0 2 0 0 0 0 0 0 0 0 2 0 0 0 0 
+Run : 30
+Population : 600
+Iteration: 200
+PR Evaluation: 3000
+AVG_SSE : 139
+AVG_PR_LOCK : 121
+SSE Execution Time : 93.808(s)
+Execution Time :115.481(s)
+Best_SSE : 94
+AVG_Accuracy : 80.9778%
+Category_Result : 
+
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+1 1 1 2 1 2 2 2 1 2 2 2 2 1 2 1 2 2 1 2 1 2 1 2 1 1 1 1 1 2 2 2 2 1 2 1 1 1 2 2 2 2 2 2 2 2 2 1 0 2 
+1 1 1 1 1 1 2 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+Run : 30
+Population : 600
+Iteration: 200
+PR Evaluation: 3600
+AVG_SSE : 132
+AVG_PR_LOCK : 121
+SSE Execution Time : 97.087(s)
+Execution Time :119.032(s)
+Best_SSE : 96
+AVG_Accuracy : 80.8667%
+Category_Result : 
+
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+0 0 0 2 0 2 0 2 0 2 2 2 2 0 2 0 2 2 2 2 0 2 0 0 2 0 0 0 0 2 2 2 2 0 2 0 0 0 2 2 2 2 0 2 2 0 2 2 2 2 
+0 0 0 0 0 0 2 0 0 0 0 0 0 2 0 0 0 0 0 2 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 2 0 0 0 0 0 0 0 0 2 0 0 
+Run : 30
+Population : 600
+Iteration: 200
+PR Evaluation: 4800
+AVG_SSE : 121
+AVG_PR_LOCK : 122
+SSE Execution Time : 99.743(s)
+Execution Time :121.645(s)
+Best_SSE : 84
+AVG_Accuracy : 82.9778%
+Category_Result : 
+
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+1 2 1 2 2 2 1 2 1 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 1 1 2 2 2 2 2 1 2 2 1 2 2 2 2 2 2 2 2 2 2 2 2 2 
+1 1 1 1 1 1 2 1 1 1 1 1 1 1 2 1 1 1 1 1 1 1 1 1 1 1 2 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+Run : 30
+Population : 600
+Iteration: 200
+PR Evaluation: 6000
+AVG_SSE : 110
+AVG_PR_LOCK : 121
+SSE Execution Time : 105.324(s)
+Execution Time :127.415(s)
+Best_SSE : 86
+AVG_Accuracy : 84.3556%
+Category_Result : 
+
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+2 1 2 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 1 1 1 2 2 1 1 1 1 1 2 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+2 2 2 2 2 2 1 2 2 2 2 1 2 1 2 2 2 2 2 2 2 1 2 1 2 2 1 1 2 2 2 2 2 2 2 2 2 2 2 2 2 2 1 2 2 2 2 2 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+0 2 0 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 0 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+0 2 0 0 0 0 2 0 0 0 0 0 0 2 2 0 0 0 0 2 0 2 0 2 0 0 2 2 0 0 0 0 0 2 0 0 0 0 2 0 0 0 2 0 0 0 2 0 0 2 
+Run : 30
+Population : 600
+Iteration: 200
+PR Evaluation: 7200
+AVG_SSE : 101
+AVG_PR_LOCK : 121
+SSE Execution Time : 113.225(s)
+Execution Time :137.1(s)
+Best_SSE : 86
+AVG_Accuracy : 85.9111%
+Category_Result : 
+
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+1 2 1 2 1 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 1 2 2 2 2 2 1 2 2 1 2 2 2 2 2 2 2 2 2 2 2 2 2 
+1 1 1 1 1 1 2 1 1 1 1 1 1 1 1 1 1 1 1 2 1 1 1 1 1 1 1 1 2 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+Run : 30
+Population : 600
+Iteration: 200
+PR Evaluation: 8400
+AVG_SSE : 97
+AVG_PR_LOCK : 121
+SSE Execution Time : 119.984(s)
+Execution Time :144.211(s)
+Best_SSE : 83
+AVG_Accuracy : 87.3556%
+Category_Result : 
+
+2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+0 1 0 1 1 1 1 1 0 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 0 0 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+0 1 0 0 0 0 1 0 0 0 0 0 0 1 1 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 1 0 0 0 0 0 0 1 
+Run : 30
+Population : 600
+Iteration: 200
+PR Evaluation: 9600
+AVG_SSE : 91
+AVG_PR_LOCK : 121
+SSE Execution Time : 130.3(s)
+Execution Time :154.887(s)
+Best_SSE : 82
+AVG_Accuracy : 87.9556%
+Category_Result : 
+
+2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+1 0 1 0 1 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+1 1 1 1 1 1 0 1 1 1 1 1 1 1 1 1 1 1 1 0 1 0 1 1 1 1 0 0 1 1 1 1 1 1 1 1 1 1 0 1 1 1 0 1 1 1 1 1 1 0 
+Run : 30
+Population : 600
+Iteration: 200
+PR Evaluation: 10800
+AVG_SSE : 92
+AVG_PR_LOCK : 119
+SSE Execution Time : 142.435(s)
+Execution Time :167.541(s)
+Best_SSE : 82
+AVG_Accuracy : 87.8889%
+Category_Result : 
+
+2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+1 0 1 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+1 0 1 1 1 1 0 1 1 1 1 1 1 0 1 1 1 1 1 0 1 0 1 0 1 1 0 0 1 1 1 1 1 0 0 1 1 1 1 1 1 1 0 1 1 1 0 1 1 0 
+Run : 30
+Population : 600
+Iteration: 200
+PR Evaluation: 12000
+AVG_SSE : 88
+AVG_PR_LOCK : 108
+SSE Execution Time : 152.948(s)
+Execution Time :176.693(s)
+Best_SSE : 82
+AVG_Accuracy : 88.2444%
+Category_Result : 
+
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+2 0 2 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 2 2 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+2 0 2 2 2 2 0 2 2 2 2 2 2 2 2 2 2 2 2 0 2 0 2 0 2 2 0 0 2 2 2 2 2 2 2 2 2 0 0 2 2 2 0 2 2 2 0 2 2 0 
+Run : 30
+Population : 600
+Iteration: 200
+PR Evaluation: 120000
+AVG_SSE : 79
+AVG_PR_LOCK : 0
+SSE Execution Time : 206.763(s)
+Execution Time :230.368(s)
+Best_SSE : 78
+AVG_Accuracy : 89.6%
+Category_Result : 
+
+

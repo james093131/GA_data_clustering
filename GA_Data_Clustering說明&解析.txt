@@ -17,7 +17,7 @@ PR coefficient 0.8
 詳細情形見GA+PR_clustering.pdf
 
 本次實做主要探討PR對於時間和SSE的關係
-以此次實驗下設定較為適合的PR PR_ignore(3000-6000)
-能有效節省35%的時間但會使得SSE的值多了30%（準確度降低7%)
+以此次實驗下設定較為適合的PR PR_ignore(6000-7200)
+能有效節省40-45%的時間但會使得SSE的值多了27%-39%（準確度降低4%)
 更多不同的PR ignore與時間和ＳＳＥ的關係請見GA+PR_clustering.pdf
 
